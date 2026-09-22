@@ -1,0 +1,19 @@
+[Unit]
+Description=BTC news sentiment dashboard
+After=network.target
+
+[Service]
+Type=simple
+User=@USER@
+Group=@GROUP@
+WorkingDirectory="@ROOT@"
+ExecStart="@PHP@" -S @WEB_HOST@:@WEB_PORT@ -t "@ROOT@"
+Restart=on-failure
+RestartSec=3
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ReadWritePaths="@ROOT@/data"
+
+[Install]
+WantedBy=multi-user.target

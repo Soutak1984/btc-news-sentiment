@@ -1,0 +1,11 @@
+[Unit]
+Description=Collect BTC news and store a sentiment snapshot
+
+[Service]
+Type=oneshot
+WorkingDirectory="@ROOT@"
+ExecStart="@PHP@" "@ROOT@/cron.php"
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ReadWritePaths="@ROOT@/data"
